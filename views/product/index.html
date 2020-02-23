@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <h3>Product List</h3>
+    <table border="1" class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Description</th>
+                <th scope="col">Photo</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        {{range .products}}
+        <tr>
+            <td scope="row">{{.Id}}</td>
+            <td>{{.Name}}</td>
+            <td>{{.Price}}</td>
+            <td>{{.Quantity}}</td>
+            <td>{{.Description}}</td>
+            <td><img src="/static/images/{{.Photo}}" width="120"></td>
+            <td><a href="/cart/buy?id={{.Id}}">Buy</a></td>
+        </tr>
+        {{end}}
+    </table>
+</body>
+
+</html>

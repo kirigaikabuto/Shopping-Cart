@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <h3>Cart List</h3>
+    <table border="1" class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">Action</th>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Description</th>
+                <th scope="col">Photo</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Sub total</th>
+
+            </tr>
+        </thead>
+        {{range .cart}}
+        <tr>
+            <td>
+                <a href="/cart/remove?id={{.Product.Id}}">Remove</a>
+            </td>
+            <td scope="row">{{.Product.Id}}</td>
+            <td>{{.Product.Name}}</td>
+            <td>{{.Product.Price}}</td>
+            <td>{{.Product.Description}}</td>
+            <td><img src="/static/images/{{.Product.Photo}}" width="120"></td>
+            <td>{{.Quantity}}</td>
+            <td>{{total .}}</td>
+        </tr>
+        {{end}}
+        <tr>
+            <td colspan="5">Total</td>
+            <td>{{.total}}</td>
+        </tr>
+    </table>
+    <a href="/product">Continue Shopping</a>
+</body>
+
+</html>
